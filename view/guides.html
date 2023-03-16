@@ -1,77 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Guide Information</title>
-<!-- Add your stylesheets and scripts here -->
-</head>
 <body>
 <h1>Guide Information</h1>
+<!--<table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--                <th>Name</th>-->
+<!--                <th>Contact Information</th>-->
+<!--                <th>Areas of Expertise</th>-->
+<!--                <th>Upcoming Tours</th>-->
+<!--                <th>Ratings</th>-->
+<!--                <th>Reviews</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody id="guide-table-body"></tbody>-->
+<!--</table>-->
 
-    <!-- Load guide data from JSON file -->
+<!-- Load guide data from JSON file -->
 <script>
-        fetch('./mid/model/guides.json')
-            .then(response => response.json())
-            .then(data => {
-            // Create table with guide data
-let table = '<h2>All Guides</h2><table border="1"><tr><th>Name</th><th>Contact Information</th><th>Areas of Expertise</th><th>Upcoming Tours</th><th>Ratings</th><th>Reviews</th></tr>';
-data.forEach(guide => {
-    table += '<tr><td>' + guide.name + '</td><td>' + guide.email + '<br>' + guide.phone + '</td><td>' + guide.expertise.join(', ') + '</td><td>' + guide.upcomingTours.join(', ') + '</td><td>' + guide.ratings + '</td><td>' + guide.reviews + '</td></tr>';
-});
-table += '</table>';
+        fetch("/../mid/model/guides.json")
+                .then(response => response.json())
+                .then(data => {
+                        // Create table with guide data
+                        let table = '<h2>All Guides</h2><table border="1"><tr><th>Name</th><th>Contact Information</th><th>Areas of Expertise</th><th>Upcoming Tours</th><th>Ratings</th><th>Reviews</th></tr>';
+                        data.forEach(guide => {
+                                table += '<tr><td>' + guide.name + '</td><td>' + guide.email + '<br>' + guide.phone + '</td><td>' + guide.expertise.join(', ') + '</td><td>' + guide.upcomingTours.join(', ') + '</td><td>' + guide.ratings + '</td><td>' + guide.reviews + '</td></tr>';
+                        });
+                        table += '</table>';
 
-                document.getElementById('guide-data').innerHTML = table;
-            })
-            .catch(error => {
-                console.error('Error loading guide data: ', error);
-            });
+                        document.getElementById('guide-data').innerHTML = table;
+                })
+                .catch(error => {
+                        console.error('Error loading guide data: ', error);
+                });
 </script>
 
-    <!-- Display table with guide data -->
+<!-- Display table with guide data -->
 <div id="guide-data"></div>
 
-    <!-- Guide management form -->
+<!-- Guide management form -->
 <h2>Guide Management</h2>
-<form action=`/mid/controller/addguide.php`method="post">
-<label for="name">Name:</label>
-<input type="text" id="name" name="name"><br>
+<form action=`/mid/controller/addguide.php` method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
 
         <label for="email">Email:</label>
-<input type="email" id="email" name="email"><br>
+        <input type="email" id="email" name="email"><br>
 
         <label for="phone">Phone:</label>
-<input type="tel" id="phone" name="phone"><br>
+        <input type="tel" id="phone" name="phone"><br>
 
         <label for="expertise">Areas of Expertise :</label>
-<input type="text" id="expertise" name="expertise"><br>
+        <input type="text" id="expertise" name="expertise"><br>
 
         <label for="upcoming-tours">Upcoming Tours :</label>
-<input type="text" id="upcoming-tours" name="upcoming-tours"><br>
+        <input type="text" id="upcoming-tours" name="upcoming-tours"><br>
 
-<label for="ratings">Ratings:</label>
-<input type="text" id="ratings" name="ratings"><br>
+        <label for="ratings">Ratings:</label>
+        <input type="text" id="ratings" name="ratings"><br>
 
-<label for="reviews">Reviews:</label>
-<input type="text" id="reviews" name="reviews"><br>
+        <label for="reviews">Reviews:</label>
+        <input type="text" id="reviews" name="reviews"><br>
 
         <input type="submit" value="Add Guide" name="add-guide" >
-<input type="submit" value="Edit Guide" name="edit_guide" >
-<input type="submit" value="Delete Guide">
+        <input type="submit" value="Edit Guide" name="edit_guide" >
+        <input type="submit" value="Delete Guide">
 </form>
 
-    <!-- Guide contact form -->
+<!-- Guide contact form -->
 <h2>Contact Guide</h2>
 <form action="#" method="post">
-<label for="name">Name:</label>
-<input type="text" id="name" name="name"><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
 
         <label for="email">Email:</label>
-<input type="email" id="email" name="email"><br>
+        <input type="email" id="email" name="email"><br>
 
         <label for="phone">Phone:</label>
-<input type="tel" id="phone" name="phone"><br>
+        <input type="tel" id="phone" name="phone"><br>
 
         <label for="message">Message:</label>
-<textarea id="message" name="message"></textarea><br>
+        <textarea id="message" name="message"></textarea><br>
 
         <input type="submit" value="Send Message">
 </form>
